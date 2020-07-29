@@ -95,6 +95,7 @@
       <DependentUpon>Northwind.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Products.bak" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Northwind.Context.tt">

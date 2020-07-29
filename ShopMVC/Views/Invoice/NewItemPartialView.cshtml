@@ -1,33 +1,30 @@
 ﻿@model DataLayer.Product
-<tr>
-    <td>
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductId, "Productos", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                <select class="form-control">
-                    @foreach (var product in ViewBag.ProductList)
-                    {
-                        <option value="@product.ProductId" meta-productprice="@product.Price"> @product.ProductDescripcion </option>
-                    }
-                </select>
-                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </td>
-    <td>
-        <div class="form-group">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control-plaintext" id="quantity" name="quantity" value="0.00">
-            </div>
-        </div>
-    </td>
-    <td>
-        <div class="form-group">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control-plaintext" id="price" name="price" value="0.00">
-            </div>
-        </div>
-    </td>
-</tr>
+
+@{
+    Layout = null;
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ProductId, "Productos", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <select class="form-control">
+            @foreach (var product in ViewBag.ProductList)
+            {
+                <option value="@product.ProductId" meta-productprice="@product.Price"> @product.ProductDescripcion </option>
+            }
+        </select>
+        @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-4">
+        <input type="number" class="form-control-plaintext" id="quantity" name="quantity" value="0.00">
+    </div>
+</div>
+<div class="form-group">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-4">
+        <input type="number" readonly class="form-control-plaintext" id="price" name="price" value="0.00">
+    </div>
+</div>

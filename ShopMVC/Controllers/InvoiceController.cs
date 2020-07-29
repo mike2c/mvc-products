@@ -19,7 +19,7 @@ namespace ShopMVC.Controllers
 
         public ActionResult New()
         {
-
+            ViewBag.CustomerId = new SelectList(db.Customer, "CustomerId", "FirstName");
             return View();
         }
 

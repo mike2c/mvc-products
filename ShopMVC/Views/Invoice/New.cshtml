@@ -1,4 +1,5 @@
-﻿
+﻿@model DataLayer.Invoice
+
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,9 +17,11 @@
         <small id="invoiceDateHelp" class="form-text text-muted">Digite la fecha y la hora de la factura en el formato proporcionado</small>
     </div>
     <div class="form-group">
-        <label for="customerId">Seleccione un cliente</label>
-        <input type="text" class="form-control" id="customerId" aria-describedby="customerHelp" placeholder="Cliente">
-        <small id="customerHelp" class="form-text text-muted">Seleccione un cliente válido</small>
+        @Html.LabelFor(model => model.CustomerId, "Customer", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CustomerId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+        </div>
     </div>
 
     <div class="form-group">
