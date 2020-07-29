@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DataLayer.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<a type="button" href="Invoice/New" class="btn btn-primary">Nueva factura</a>
+
+
+    @if (!Model.Any())
+    {
+        <h4 style="text-align:center;margin:20px;">NO SE HAN REGISTRADO FACTURAS AÚN</h4>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (DataLayer.Invoice invoice in Model)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => invoice.InvoiceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => invoice.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => invoice.Customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => invoice.Total)
+            </td>
+        }
+    </table>
+
+

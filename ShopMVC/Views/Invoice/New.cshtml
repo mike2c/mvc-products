@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva factura</h2>
+
+@using (Html.BeginForm("New", "Invoice", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="InvoiceDate">Fecha de la factura</label>
+        <input type="datetime" class="form-control" id="InvoiceDate" aria-describedby="invoiceDateHelp" disabled value="@DateTime.Now" placeholder="@DateTime.Now">
+        <small id="invoiceDateHelp" class="form-text text-muted">Digite la fecha y la hora de la factura en el formato proporcionado</small>
+    </div>
+    <div class="form-group">
+        <label for="customerId">Seleccione un cliente</label>
+        <input type="text" class="form-control" id="customerId" aria-describedby="customerHelp" placeholder="Cliente">
+        <small id="customerHelp" class="form-text text-muted">Seleccione un cliente válido</small>
+    </div>
+
+    <div class="form-group">
+        <label for="subTotal">Sub Total</label>
+        <input type="number" class="form-control" id="subTotal" aria-describedby="subTotalHelp" placeholder="Sub total">
+        <small id="subTotalHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="iva">IVA</label>
+        <input type="number" class="form-control" id="iva" aria-describedby="ivaHelp" placeholder="Total">
+        <small id="ivaHelp" class="form-text text-muted">IVA</small>
+    </div>
+
+    <div class="form-group">
+        <label for="total">Total</label>
+        <input type="number" class="form-control" id="total" aria-describedby="totallHelp" placeholder="Total">
+        <small id="totallHelp" class="form-text text-muted">Total a pagar</small>
+    </div>
+
+    <button type="button" id="newItemButton" class="btn btn-secondary" title="" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title" aria-describedby="popover881301">
+        Agregar Articulo
+    </button>
+
+    <div id="items">
+
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear factura" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Cancelar", "Index")
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("/Scripts/invoice.js")"></script>
+}
